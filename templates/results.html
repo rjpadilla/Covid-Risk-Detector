@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Results - {% endblock %}
+{% block content %}
+  <h1> PREDICTION :</h1><br>
+  {%if data == 1%}
+  <h1>You a gonner</h1>
+  {%else%}
+  <h1>You live boy</h1>
+  {%endif%}
+
+        <br><br>
+    <a href='/'>go back to home page</a>
+
+{% endblock %}

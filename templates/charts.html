@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% set active_page = 'charts' %}
+{% block title %}Charts - {% endblock %}
+{% block content %}
+<body class="body">
+  <div class="container" aliign="left">
+    <embed type="image/svg+xml" src={{bar_data|safe}} style='max-width:1000px'/>
+  </div>
+</body>
+{% endblock %}

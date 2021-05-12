@@ -1,0 +1,12 @@
+body {
+  padding-top: 56px;
+}
+
+.navbar-brand {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+a:hover {
+  text-decoration: none;
+}

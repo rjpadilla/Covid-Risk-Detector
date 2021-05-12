@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% set active_page = 'survey' %}
+{% block title %}Survey - {% endblock %}
+
+{% block content %}
+
+
+<form method="POST", action="/predict">
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+    <h1>Survey</h1><hr>
+        <label name="age">Birthdate</label>
+        <input type="text" name="age">
+      <div class="form-group">
+        <label for="sexlist">Sex:</label>
+        <select class="form-control" id="sexlist" name="sex">
+          <option value=1>Male</option>
+          <option value=0>Female<option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="smoking">Smoker:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="smoking" name="smoking" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="smoking" name="smoking" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="healthcare_worker">Healthcare Worker:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="healthcare_worker" name="healthcare_worker" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="healthcare_worker" name="healthcare_worker" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="hypertension">Hypertension:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="hypertension" name="hypertension" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="hypertension" name="hypertension" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="diabetes">Diabetes:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="diabetes" name="diabetes" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="diabetes" name="diabetes" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dementia">Dementia:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="dementia" name="dementia" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="dementia" name="dementia" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cancer">Cancer:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cancer" name="cancer" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cancer" name="cancer" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="copd">Chronic Obstructive Pulmonary Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="copd" name="copd" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="copd" name="copd" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="asthma">Asthma:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="asthma" name="asthma" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="asthma" name="asthma" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="chd">Chronic Hematologic Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="chd" name="chd" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="chd" name="chd" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ccd">Chronic Cardiac Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="ccd" name="ccd" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="ccd" name="ccd" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cnd">Chronic Neurological Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cnd" name="cnd" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cnd" name="cnd" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cld">Chronic Liver Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cld" name="cld" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="cld" name="cld" value="0">No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ckd">Chronic Kidney Disease:</label>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="ckd" name="ckd" value="1">Yes
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="ckd" name="ckd" value="0">No
+          </label>
+        </div>
+      </div>
+      <hr>
+      <input class="btn btn-primary form-control" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+</form>
+
+
+{% endblock %}
