@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import pygal
 
+
 # Loads the machine learning model
 df = pd.read_csv("data/comorbid.csv")
 lr_cv_model = joblib.load("data/comorbid-trained-model.pkl")
@@ -16,6 +17,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template("home.html")
+
 
 @app.route("/survey")
 def survey():
@@ -37,6 +39,7 @@ def result():
     pred = lr_cv_model.predict(arr)
     return render_template('results.html', data=pred)
 
+
 @app.route('/charts')
 def charts() -> render_template:
     """
@@ -53,6 +56,7 @@ def charts() -> render_template:
     bar_chart.add('female', female_deaths)
     bar_data = bar_chart.render_data_uri()
     return render_template('charts.html', bar_data=bar_data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
