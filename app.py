@@ -17,11 +17,21 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    """
+    Function: home
+    Input: none
+    Returns: The main page of the webapp
+    """
     return render_template("home.html")
 
 
 @app.route("/survey")
 def survey():
+    """
+    Function: entry
+    Input: none
+    Returns: The survey form to predict morbidity
+    """
     return render_template("survey.html")
 
 
