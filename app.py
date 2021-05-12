@@ -1,7 +1,7 @@
 """
 comorbidity-ml: a webapp to the users the chance of morbidity
 """
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 import joblib
 import numpy as np
 import pandas as pd
@@ -13,6 +13,7 @@ df = pd.read_csv("data/comorbid.csv")
 lr_cv_model = joblib.load("data/comorbid-trained-model.pkl")
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
@@ -31,8 +32,8 @@ def result():
     Input: none
     Returns: The result page of the user's prediction
     """
-    letters = ['age', 'sex', 'smoking', 'healthcare_worker', 'hypertension', 
-               'diabetes', 'dementia', 'cancer', 'copd', 'asthma', 
+    letters = ['age', 'sex', 'smoking', 'healthcare_worker', 'hypertension',
+               'diabetes', 'dementia', 'cancer', 'copd', 'asthma',
                'chd', 'ccd', 'cnd', 'cld', 'ckd']
     pred_date = [int(request.form[letter]) for letter in letters]
     arr = np.array([pred_date])
