@@ -7,11 +7,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegressionCV
 
 
-df = pd.read_csv("data/comorbid.csv")
-feature_col_names = ['age', 'sex', 'smoking', 'healthcare_worker',
-                     'hypertension', 'diabetes',
-                     'dementia', 'cancer', 'copd', 'asthma', 'chd', 'ccd', 'cnd', 'cld',
-                     'ckd']
+df = pd.read_csv("data/conditions.csv")
+
+# Tidying data
+df = df.drop(columns=['Organ_transplant', 'Healthcare_worker', 'Pregnancy', 'Cachexia', 'Autoimm_disorder'])
+df.columns = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
+              'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
+              'asthma', 'chd', 'ccd', 'cnd', 'cld',
+              'ckd', 'aids', 'death']
+
+feature_col_names = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
+                     'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
+                     'asthma', 'chd', 'ccd', 'cnd', 'cld',
+                     'ckd', 'aids']
 predicted_class_names = ['death']
 
 X = df[feature_col_names].values
@@ -24,13 +32,3 @@ lr_cv_model = LogisticRegressionCV(n_jobs=-1, random_state=42, Cs=3, cv=10, refi
 lr_cv_model.fit(X_train, y_train.ravel())
 
 joblib.dump(lr_cv_model, "data/comorbid-trained-model.pkl")
-
-
-df_predict = pd.read_csv("data/comorbid-predict.csv")
-
-print(df_predict.shape)
-
-X_predict = df_predict
-del X_predict['death']
-
-print(lr_cv_model.predict(X_predict))

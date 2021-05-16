@@ -42,9 +42,9 @@ def result():
     Input: none
     Returns: The result page of the user's prediction
     """
-    letters = ['age', 'sex', 'smoking', 'healthcare_worker', 'hypertension',
-               'diabetes', 'dementia', 'cancer', 'copd', 'asthma',
-               'chd', 'ccd', 'cnd', 'cld', 'ckd']
+    letters = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
+               'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
+               'asthma', 'chd', 'ccd', 'cnd', 'cld', 'ckd', 'aids']
     pred_date = [int(request.form[letter]) for letter in letters]
     arr = np.array([pred_date])
     pred = lr_cv_model.predict(arr)
