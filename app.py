@@ -1,11 +1,15 @@
 """
 comorbidity-ml: a webapp to the users the chance of morbidity
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
+from matplotlib.backends.backend_svg import FigureCanvasSVG
+from matplotlib.figure import Figure
 import joblib
 import numpy as np
 import pandas as pd
 import pygal
+import io
+import random
 
 
 # Loads the machine learning model
@@ -67,6 +71,44 @@ def charts() -> render_template:
     bar_chart.add('female', female_deaths)
     bar_data = bar_chart.render_data_uri()
     return render_template('charts.html', bar_data=bar_data)
+
+@app.route("/svg")
+def svg():
+    """
+    Returns svg matplotlib
+    """
+    num_x_points = int(request.args.get("num_x_points", 50))
+    return f"""
+    # in a real app you probably want to use a flask template.
+    <h1>Flask and matplotlib</h1>
+
+    <h2>Random data with num_x_points={num_x_points}</h2>
+
+    <form method=get action="/">
+      <input name="num_x_points" type=number value="{num_x_points}" />
+      <input type=submit value="update graph">
+    </form>
+
+    <h3>Plot as a SVG</h3>
+    <img src="/matplot-as-image-{num_x_points}.svg"
+         alt="random points as svg"
+         height="200"
+    >
+
+    """
+    
+@app.route("/matplot-as-image-<int:num_x_points>.svg")
+def plot_svg(num_x_points=50):
+    """ renders the plot on the fly.
+    """
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    x_points = range(num_x_points)
+    axis.plot(x_points, [random.randint(1, 30) for x in x_points])
+
+    output = io.BytesIO()
+    FigureCanvasSVG(fig).print_svg(output)
+    return Response(output.getvalue(), mimetype="image/svg+xml")
 
 
 if __name__ == "__main__":
