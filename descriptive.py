@@ -5,7 +5,6 @@ import pandas as pd
 import prince
 
 
-pd.set_option('display.float_format', lambda x: '{:.2f}'.format(x))
 df = pd.read_csv("data/conditions.csv")
 
 mca = prince.MCA(
