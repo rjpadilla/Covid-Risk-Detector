@@ -9,3 +9,4 @@ numpy
 pandas
 sklearn
 pygal
+prince

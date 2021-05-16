@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegressionCV
 
 
-df = pd.read_csv("data/comorbid.csv")
+df = pd.read_csv("data/conditions.csv")
 feature_col_names = ['age', 'sex', 'smoking', 'healthcare_worker',
                      'hypertension', 'diabetes',
                      'dementia', 'cancer', 'copd', 'asthma', 'chd', 'ccd', 'cnd', 'cld',
