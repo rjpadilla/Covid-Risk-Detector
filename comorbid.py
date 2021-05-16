@@ -17,9 +17,9 @@ df.columns = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
               'ckd', 'aids', 'death']
 
 feature_col_names = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
-              'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
-              'asthma', 'chd', 'ccd', 'cnd', 'cld',
-              'ckd', 'aids']
+                     'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
+                     'asthma', 'chd', 'ccd', 'cnd', 'cld',
+                     'ckd', 'aids']
 predicted_class_names = ['death']
 
 X = df[feature_col_names].values
