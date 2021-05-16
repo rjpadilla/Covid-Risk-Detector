@@ -43,7 +43,7 @@ def result():
     Returns: The result page of the user's prediction
     """
     letters = ['age', 'sex', 'smoking', 'alcohol', 'hypertension',
-               'diabetes', 'rheuma', 'dementia', 'cancer', 'copd', 
+               'diabetes', 'rheuma', 'dementia', 'cancer', 'copd',
                'asthma', 'chd', 'ccd', 'cnd', 'cld', 'ckd', 'aids']
     pred_date = [int(request.form[letter]) for letter in letters]
     arr = np.array([pred_date])
