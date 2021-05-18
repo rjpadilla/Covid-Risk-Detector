@@ -1,5 +1,5 @@
 """
-comorbidity-ml: a webapp to the users the chance of morbidity
+comorbidity-ml: a webapplication to the users the chance of morbidity
 """
 from flask import Flask, render_template, request
 import joblib
@@ -12,20 +12,20 @@ import pygal
 df = pd.read_csv("data/comorbid.csv")
 lr_cv_model = joblib.load("data/comorbid-trained-model.pkl")
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route("/")
+@application.route("/")
 def home():
     """
     Function: home
     Input: none
-    Returns: The main page of the webapp
+    Returns: The main page of the webapplication
     """
     return render_template("home.html")
 
 
-@app.route("/survey")
+@application.route("/survey")
 def survey():
     """
     Function: entry
@@ -35,7 +35,7 @@ def survey():
     return render_template("survey.html")
 
 
-@app.route('/predict', methods=['POST'])
+@application.route('/predict', methods=['POST'])
 def result():
     """
     Function: result
@@ -51,12 +51,12 @@ def result():
     return render_template('results.html', data=pred)
 
 
-@app.route('/charts')
+@application.route('/charts')
 def charts() -> render_template:
     """
     Function: charts
     Input: none
-    Returns: Embedding a pygal chart in the webapp
+    Returns: Embedding a pygal chart in the webapplication
     """
     male_deaths = len(df[(df.death == 1) & (df.sex == 1)])
     female_deaths = len(df[(df.death == 1) & (df.sex == 0)])
@@ -70,4 +70,4 @@ def charts() -> render_template:
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run()
