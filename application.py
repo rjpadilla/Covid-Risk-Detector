@@ -9,7 +9,7 @@ import pygal
 
 
 # Loads the machine learning model
-df = pd.read_csv("data/comorbid.csv")
+df = pd.read_csv("data/conditions.csv")
 lr_cv_model = joblib.load("data/comorbid-trained-model.pkl")
 
 application = Flask(__name__)
