@@ -7,7 +7,6 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import plot_confusion_matrix
-from sklearn import svm
 
 
 df = pd.read_csv("data/conditions.csv")
