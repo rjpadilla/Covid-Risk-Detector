@@ -1,11 +1,12 @@
 """
 comorbidity-ml: a webapplication to the users the chance of morbidity
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,session
 import joblib
 import numpy as np
 import pandas as pd
 import pygal
+from checker import check_logged_in, home_logged_in, wrong_info
 
 
 # Loads the machine learning model
@@ -15,7 +16,11 @@ lr_cv_model = joblib.load("data/comorbid-trained-model.pkl")
 application = Flask(__name__)
 
 
+application.secret_key = "notasecret"
+
+
 @application.route("/")
+@home_logged_in
 def home():
     """
     Function: home
@@ -25,7 +30,41 @@ def home():
     return render_template("home.html")
 
 
+@application.route("/login")
+def login():
+    """
+    Function: login
+    Input: none
+    Returns: The login page of the webapplication
+    """
+    return render_template("login.html")
+
+
+@application.route("/check", methods=['POST'])
+@wrong_info
+def check():
+    """
+    Function: check
+    Input: none
+    Returns: Check username and password
+    """
+    session['logged_in'] = True
+    return render_template("home.html")
+
+
+@application.route("/logout", methods=['POST'])
+def logout():
+    """
+    Function: logout
+    Input: none
+    Returns: logout session
+    """
+    session.pop('logged_in')
+    return render_template("login.html")
+
+
 @application.route("/survey")
+@check_logged_in
 def survey():
     """
     Function: entry
@@ -70,4 +109,4 @@ def charts() -> render_template:
 
 
 if __name__ == "__main__":
-    application.run()
+    application.run(debug=True)
