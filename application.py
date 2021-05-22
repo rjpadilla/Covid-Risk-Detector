@@ -2,11 +2,11 @@
 comorbidity-ml: a webapplication to the users the chance of morbidity
 """
 from flask import Flask, render_template, request,session
-from checker import check_logged_in, home_logged_in, wrong_info
 import joblib
 import numpy as np
 import pandas as pd
 import pygal
+from checker import check_logged_in, home_logged_in, wrong_info
 
 
 # Loads the machine learning model
