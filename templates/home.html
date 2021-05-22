@@ -6,6 +6,12 @@
     <div class="col-lg-7 offset-lg-2 my-5">
       <div class="my-4">
         <h1>Home</h1>
+        <form method="GET", action="/survey">
+          <input class="btn btn-primary form-control" type="submit" value="Take Prediction Survey">
+        </form>
+        <form method="GET", action="/charts">
+          <input class="btn btn-primary form-control" type="submit" value="Look at COVID Risk Charts">
+        </form>
         <form method="POST", action="/logout">
           <input class="btn btn-primary form-control" type="submit" value="Log out">
         </form>
