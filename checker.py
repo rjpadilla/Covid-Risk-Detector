@@ -1,13 +1,14 @@
 from flask import redirect, flash, session, url_for, request
 from functools import wraps
 
+
 def home_logged_in(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if 'logged_in' in session:
             return func(*args, **kwargs)
         else:
-          return redirect(url_for('login'))
+            return redirect(url_for('login'))
     return wrapper
 
 
