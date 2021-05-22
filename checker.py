@@ -27,9 +27,9 @@ def wrong_info(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if (request.form['username'] != 'admin' or request.form['password'] != 'password'):
-            flash("You did not enter the right credentials.".format(request.form.get("title")), "danger")
+            flash("You did not enter the right credentials.", "danger")
             return redirect(url_for('login'))
         else:
-            flash("You successfully logged in!".format(request.form.get("title")), "success")
+            flash("You successfully logged in!", "success")
             return func(*args, **kwargs)
     return wrapper

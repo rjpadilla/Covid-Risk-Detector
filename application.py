@@ -62,6 +62,7 @@ def logout():
     session.pop('logged_in')
     return render_template("login.html")
 
+
 @application.route("/survey")
 @check_logged_in
 def survey():
