@@ -18,7 +18,7 @@ def check_logged_in(func):
         if 'logged_in' in session:
             return func(*args, **kwargs)
         else:
-            flash("You need to login first.".format(request.form.get("title")), "danger")
+            flash("You need to login first.", "danger")
             return redirect(url_for('login'))
     return wrapper
 
