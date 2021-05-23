@@ -90,6 +90,7 @@ def result():
 
 
 @application.route('/charts')
+@check_logged_in
 def charts() -> render_template:
     """
     Function: charts

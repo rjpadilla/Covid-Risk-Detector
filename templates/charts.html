@@ -4,9 +4,21 @@
 {% block content %}
 <body class="body">
   <div class="container" aliign="left">
+  <h1>Data set before cleaning</h1>
   <img src="{{ url_for('static', filename='images/mca_plot.svg') }}">
   <br>
+  <h1>Data set after cleaning (makes for accurate results)</h1>
   <img src="{{ url_for('static', filename='images/mca_plot_clean.svg') }}">
+  <br>
+  <h1>Bar group showing the concentrations of COVID-19 cases by age</h1>
+  <img src="{{ url_for('static', filename='images/barplot.png') }}">
+  <br>
+  <h1>Correlation between age and death</h1>
+  <img src="{{ url_for('static', filename='images/jointplot.png') }}">
+  <br>
+  <h1>Confusion matrix on accuracy of prediction</h1>
+  <img src="{{ url_for('static', filename='images/confusion.png') }}">
+  <br>
   </div>
 </body>
 {% endblock %}
