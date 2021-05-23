@@ -5,7 +5,6 @@ from flask import Flask, render_template, request,session
 import joblib
 import numpy as np
 import pandas as pd
-import pygal
 from checker import check_logged_in, home_logged_in, wrong_info
 
 
