@@ -95,17 +95,9 @@ def charts() -> render_template:
     """
     Function: charts
     Input: none
-    Returns: Embedding a pygal chart in the webapplication
+    Returns: Returns the charts page in the webapplication
     """
-    male_deaths = len(df[(df.death == 1) & (df.sex == 1)])
-    female_deaths = len(df[(df.death == 1) & (df.sex == 0)])
-    # Covid cases by mortality
-    bar_chart = pygal.Bar()
-    bar_chart.title = "Deaths by Gender"
-    bar_chart.add('male', male_deaths)
-    bar_chart.add('female', female_deaths)
-    bar_data = bar_chart.render_data_uri()
-    return render_template('charts.html', bar_data=bar_data)
+    return render_template('charts.html')
 
 
 if __name__ == "__main__":
