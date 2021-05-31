@@ -3,22 +3,32 @@
 {% block title %}Charts - {% endblock %}
 {% block content %}
 <body class="body">
-  <div class="container" aliign="left">
-  <h1>Data set before cleaning</h1>
-  <img src="{{ url_for('static', filename='images/mca_plot.svg') }}">
-  <br>
-  <h1>Data set after cleaning (makes for accurate results)</h1>
-  <img src="{{ url_for('static', filename='images/mca_plot_clean.svg') }}">
-  <br>
-  <h1>Bar group showing the concentrations of COVID-19 cases by age</h1>
-  <img src="{{ url_for('static', filename='images/barplot.png') }}">
-  <br>
-  <h1>Correlation between age and death</h1>
-  <img src="{{ url_for('static', filename='images/jointplot.png') }}">
-  <br>
-  <h1>Confusion matrix on accuracy of prediction</h1>
-  <img src="{{ url_for('static', filename='images/confusion.png') }}">
-  <br>
+  <div class="container" align="left">
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mca_plot">MCA Plot</button>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#mca_plot_clean">MCA Plot - Clean</button>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#bar">Bar</button>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#joint">Joint</button>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#confusion">Confusion Matrix</button>
+  <div id="mca_plot" class="collapse">
+    <h1>Data set before cleaning</h1>
+    <img src="{{ url_for('static', filename='images/mca_plot.png') }}">
+  </div>
+  <div id="mca_plot_clean" class="collapse">
+    <h1>Data set after cleaning (makes for accurate results)</h1>
+    <img src="{{ url_for('static', filename='images/mca_plot_clean.png') }}">
+  </div>
+  <div id="bar" class="collapse">
+    <h1>Bar group showing the concentrations of COVID-19 cases by age</h1>
+    <img src="{{ url_for('static', filename='images/barplot.png') }}">
+  </div>
+  <div id="joint" class="collapse">
+    <h1>Correlation between age and death</h1>
+    <img src="{{ url_for('static', filename='images/jointplot.png') }}">
+  </div>
+  <div id="confusion" class="collapse">
+    <h1>Confusion matrix on accuracy of prediction</h1>
+    <img src="{{ url_for('static', filename='images/confusion.png') }}">
+  </div>
   </div>
 </body>
 {% endblock %}
