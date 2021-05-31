@@ -3,9 +3,9 @@
 {% block content %}
   <h1> PREDICTION :</h1><br>
   {%if data == 1%}
-  <h1>You have a high risk of COVID-19 mortality.</h1>
+  <h1>You have a <strong>high</strong> risk of COVID-19 mortality.</h1>
   {%else%}
-  <h1>You have a low risk of COVID-19 mortality.</h1>
+  <h1>You have a <strong>low</strong> risk of COVID-19 mortality.</h1>
   {%endif%}
   <br>
   <img src="{{ url_for('static', filename='images/confusion.png') }}">
@@ -16,6 +16,7 @@
         <form method="GET", action="/charts">
           <input class="btn btn-primary form-control" type="submit" value="Look at COVID Risk Charts">
         </form>
+        <br>
         <form method="GET", action="/">
           <input class="btn btn-primary form-control" type="submit" value="Go Back to Home Page">
         </form>
