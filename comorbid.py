@@ -37,7 +37,7 @@ lr_cv_model.fit(X_train, y_train.ravel())
 
 # Predict accuracy of our model
 lr_cv_accuracy_test = lr_cv_model.predict(X_test)
-print("Accuracy: {0:.4f}".format(metrics.accuracy_score(y_test, lr_cv_accuracy_test)))
+print("Accuracy: {0:.4f}".format(metrics.recall_score(y_test, lr_cv_accuracy_test)))
 
 # Saving charts
 disp = plot_confusion_matrix(lr_cv_model, X_test, y_test)
