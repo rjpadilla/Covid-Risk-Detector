@@ -29,7 +29,7 @@ ax = df_mca.plot_coordinates(
     show_column_labels=True,
     legend_n_cols=1
 ).legend(loc='center left', bbox_to_anchor=(1, 0.5))
-ax.get_figure().savefig('static/images/mca_plot.svg')
+ax.get_figure().savefig('static/images/mca_plot.png')
 
 
 # Tidying data
@@ -60,4 +60,4 @@ ax_clean = df_mca_clean.plot_coordinates(
     show_column_labels=True,
     legend_n_cols=1
 ).legend(loc='center left', bbox_to_anchor=(1, 0.5))
-ax_clean.get_figure().savefig('static/images/mca_plot_clean.svg')
+ax_clean.get_figure().savefig('static/images/mca_plot_clean.png')

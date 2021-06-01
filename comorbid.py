@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import plot_confusion_matrix
@@ -33,6 +34,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=SPLIT_TEST_S
 
 lr_cv_model = LogisticRegressionCV(n_jobs=-1, random_state=42, Cs=3, cv=10, refit=False, class_weight="balanced", max_iter=10000)  # set number of jobs to -1 which uses all cores to parallelize
 lr_cv_model.fit(X_train, y_train.ravel())
+
+# Predict accuracy of our model
+lr_cv_accuracy_test = lr_cv_model.predict(X_test)
+print("Accuracy: {0:.4f}".format(metrics.accuracy_score(y_test, lr_cv_accuracy_test)))
 
 # Saving charts
 disp = plot_confusion_matrix(lr_cv_model, X_test, y_test)
